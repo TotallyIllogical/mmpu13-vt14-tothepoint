@@ -1,14 +1,42 @@
-/* Form wrapper styling */
-.form-wrapper {
-    width: 450px;
-    padding: 15px;
-    margin: 150px auto 50px auto;
-    background: #444;
-    background: rgba(0,0,0,.2);
-    border-radius: 10px;
-    box-shadow: 0 1px 1px rgba(0,0,0,.4) inset, 0 1px 0 rgba(255,255,255,.2);
+/*---------------------------------------------------------
+    BODY & MAIN
+---------------------------------------------------------*/
+
+body { 
+  background: #e8e8e8;
+  color: #000; 
+  -webkit-text-size-adjust: 100%;
+  text-align: justify; 
+}
+
+
+/*---------------------------------------------------------
+    SEARCH FORM
+---------------------------------------------------------*/
+
+/* Clear Floats */  
+.cf:before, .cf:after{
+    content:"";
+    display:table;
 }
  
+.cf:after{
+    clear:both;
+}
+ 
+.cf{
+    zoom:1;
+}    
+
+
+/* Form wrapper styling */  
+.form-wrapper {
+    width: 450px;
+    margin: 20px auto;
+    border: 1px solid #000;
+    border-radius: 3px;  
+}
+
 /* Form text input */
  
 .form-wrapper input {
@@ -19,7 +47,7 @@
     font: bold 15px 'lucida sans', 'trebuchet MS', 'Tahoma';
     border: 0;
     background: #eee;
-    border-radius: 3px 0 0 3px;      
+    border-radius: 3px 0 0 3px;     
 }
  
 .form-wrapper input:focus {
@@ -96,4 +124,13 @@
 .form-wrapper button::-moz-focus-inner { /* remove extra button spacing for Mozilla Firefox */
     border: 0;
     padding: 0;
+}
+
+/*-----------------------
+Result structor 
+-----------------------*/
+.wrapper { 
+  width: 840px; 
+  margin: 0 auto; 
+  background: #fff; 
 }

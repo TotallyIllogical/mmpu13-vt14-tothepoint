@@ -10,5 +10,4 @@
         <input type="text" placeholder="Search here..." required>
         <button type="submit">Search</button>
     </form>
-</body>
-</html>
+
