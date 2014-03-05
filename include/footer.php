@@ -1,4 +1,4 @@
 
-<p class="creators">Created by Eia Andersson & Hannele Piirainen</p>
+<footer>Created by Eia Andersson & Hannele Piirainen</footer>
 </body>
 </html>

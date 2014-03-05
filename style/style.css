@@ -56,7 +56,15 @@ body {
   -webkit-text-size-adjust: 100%;
   text-align: justify; 
 }
-
+h1 {
+    color: #BD8400;
+    
+}
+footer {
+    padding: 50px;
+    color: white;
+    background: #969696;
+}
 
 /*---------------------------------------------------------
     SEARCH FORM
