@@ -9,7 +9,9 @@
 	    <link rel="stylesheet" href="css/style.css" />
 	    <script src="js/vendor/modernizr.js"></script>
 		<link type="text/css" media="screen" rel="stylesheet" href="css/responsive-tables.css" />
+		
 		<script type="text/javascript" src="js/responsive-tables.js"></script>
+		<?php include('scripts/request.php'); ?>
 	</head>
 	
 	<body>
