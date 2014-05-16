@@ -11,7 +11,7 @@
 		<link type="text/css" media="screen" rel="stylesheet" href="css/responsive-tables.css" />
 		
 		<script type="text/javascript" src="js/responsive-tables.js"></script>
-		<?php include('scripts/request.php'); ?>
+		<script src='scripts/request.php'></script>
 	</head>
 	
 	<body>
