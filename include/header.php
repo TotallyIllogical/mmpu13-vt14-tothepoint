@@ -1,18 +1,32 @@
-<!doctype html>
-<head>
-	<!-- [if lt IE9]>
-	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></spcript>
+<!DOCTYPE HTML>
+<html class="no-js" lang="en">
+	<head>
+	 <title><?php echo $pageTitle;?></title>
+	    <meta charset="utf-8" />
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	    <title>To the Point</title>
+	    <link rel="stylesheet" href="css/foundation.css" />
+	    <link rel="stylesheet" href="css/style.css" />
+	    <script src="js/vendor/modernizr.js"></script>
+		<link type="text/css" media="screen" rel="stylesheet" href="css/responsive-tables.css" />
+		<script type="text/javascript" src="js/responsive-tables.js"></script>
+	</head>
+	
+	<body>
 
-	<! [endif] -->
-	<title><?php echo $pageTitle;?></title>
-	<meta charset="utf-8">
-	<link rel="stylesheet" href="style/style.css" type="text/css">
-	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald:400,700" type="text/css">
-</head>
-<body>
-	<h1><?php echo $pageTitle;?></h1>
-	<form class="form-wrapper cf">
-        <input type="text" placeholder="Search here..." required>
-        <button type="submit">Search</button>
-    </form>
-    <h2>Result</h2>
+ 	<div class="row">
+
+    	<div class="large-12 medium-12 columns">
+        	<h1><?php echo $pageTitle;?></h1>
+        </div>
+        
+        	<div class="large-8 small-9 columns">
+		      <input type="text" placeholder="Find Movie">
+		    </div>
+		    <div class="large-4 small-3 columns">
+		      <a href="#" class="alert button expand">Search</a>
+		    </div>
+		</div>
+    
+
+    </div>

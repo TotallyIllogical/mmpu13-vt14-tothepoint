@@ -1,7 +1,6 @@
 <?php
-	$pageTitle = "To The Point!";
+	$pageTitle = "To the Point";
 ?>
-
 
 <?php
 	include('include/header.php');

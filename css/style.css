@@ -1,0 +1,54 @@
+body {
+	margin: 20px;
+	line-height: 1.5;
+	background: #222;
+}
+
+#wrapper {
+	border: 1px solid #333;
+	border-radius: 5px;
+}
+
+p {
+	text-align: justify;
+}
+
+#footer {
+	text-align: center;
+	margin-top: 20px;
+	font-size: 13px;
+	color: #eee;
+}
+
+#poster {
+
+	
+}
+
+h1 {
+	color: #fff;
+}
+
+#table-wrapper {
+	margin-top: 20px;
+	width: 100%;
+}
+
+.rating {
+	color: red;
+	font-weight: bold;
+	text-align: center;
+}
+
+.center {
+	text-align: center;
+}
+
+#test {
+	height: 300px;
+}
+
+
+.panel {
+
+}
