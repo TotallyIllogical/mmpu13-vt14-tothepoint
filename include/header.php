@@ -1,17 +1,19 @@
 <!DOCTYPE HTML>
 <html class="no-js" lang="en">
 	<head>
-	 <title><?php echo $pageTitle;?></title>
-	    <meta charset="utf-8" />
-	    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	    <title>To the Point</title>
-	    <link rel="stylesheet" href="css/foundation.css" />
-	    <link rel="stylesheet" href="css/style.css" />
-	    <script src="js/vendor/modernizr.js"></script>
-		<link type="text/css" media="screen" rel="stylesheet" href="css/responsive-tables.css" />
-		
+		<title><?php echo $pageTitle;?></title>	    
+	    <meta charset="utf-8">
+    	<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=no;">
+    	
+    	<!-- CSS -->
+		<link rel="stylesheet" href="css/foundation.css">
+	    <link rel="stylesheet" href="css/style.css">
+		<link type="text/css" media="screen" rel="stylesheet" href="css/responsive-tables.css">	
+    	
+    	<!-- JS -->	   	
+	   	<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>    
+	    <script src="js/vendor/modernizr.js"></script>	
 		<script type="text/javascript" src="js/responsive-tables.js"></script>
-		<script src='scripts/request.php'></script>
 	</head>
 	
 	<body>
@@ -30,5 +32,4 @@
 		    </div>
 		</div>
     
-
-    </div>
+    </div><!-- .row -->
