@@ -21,6 +21,7 @@
 			        <div class="large-4 medium-4 columns">
 		              <h5><a href="#">Information</a></h5>
 		              <strong>Genre:</strong> Drama / Thriller<br>
+		              <strong>Released:</strong> 2006<br>
 				      <strong>Language:</strong> German<br>
 		              <strong>Runtime:</strong> 137 minutes<br>
 			          <strong>Director:</strong> Florian Henckel von Donnersmarck<br>
