@@ -27,17 +27,13 @@
         </div>
 
 	   <section id="fetch">
+	   	<div class="large-8 small-9 columns">
 	      <input type="text" placeholder="Enter a movie title" id="term" />
-	      <button id="search">Find me a poster</button>
+	  	</div>
+	  	<div class="large-4 small-3 columns">
+	      <button id="search" class="alert button expand">Search</button>
+	  	</div>
 	   </section>
 
-        
-        	<div class="large-8 small-9 columns">
-		      <input type="text" placeholder="Find Movie">
-		    </div>
-		    <div class="large-4 small-3 columns">
-		      <a href="#" class="alert button expand">Search</a>
-		    </div>
-		</div>
     
     </div><!-- .row -->

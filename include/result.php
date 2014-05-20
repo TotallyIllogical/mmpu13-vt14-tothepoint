@@ -14,19 +14,19 @@
 		        		<section id="title">
 		   				</section>
 		                <p id="description">
-		                	<br>&raquo; <a href="#">Read more</a>
+		                	
 		                </p>
 			        </div>
 
 			        <div class="large-4 medium-4 columns">
 		              <h5><a href="#">Information</a></h5>
-		              <strong>Genre:</strong> Drama / Thriller<br>
+		              <strong>Genre:</strong> <section id="genre"></section><br>
 		              <strong>Released:</strong> <section id="release"></section><br>
-				      <strong>Language:</strong> German<br>
-		              <strong>Runtime:</strong> 137 minutes<br>
-			          <strong>Director:</strong> Florian Henckel von Donnersmarck<br>
-		              <strong>Writer:</strong> Florian Henckel von Donnersmarck<br>
-		              <strong>Starring:</strong> Ulrich Mühe, Martina Gedeck, Sebastian Koch, Ulrich Tukur<br>
+				      <strong>Language:</strong> <section id="language"></section><br>
+		              <strong>Runtime:</strong> <section id="runtime"></section><br>
+			          <strong>Director:</strong> <section id="director"></section><br>
+		              <strong>Writer:</strong> <section id="writer"></section><br>
+		              <strong>Starring:</strong> <section id="starring"></section><br>
 					</div>
 
 				</div><!-- .row -->

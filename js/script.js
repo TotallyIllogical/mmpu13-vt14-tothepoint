@@ -18,7 +18,6 @@ $(document).ready(function(){
          } else {
 
             $.getJSON("http://api.themoviedb.org/3/search/movie?query=" + film + "&api_key=c9ec56f0f1ccf916a4baa2b711e5ce29", function(json) {
-              console.log(json);
 
               if (json != "Not Found"){
                 // Använd id från den första queryin för att hämta resten av informationen från en annan json, se nedan
@@ -28,7 +27,11 @@ $(document).ready(function(){
                   console.log(json);
                   $('#poster').html('<h2 class="loading"></h2><img id="thePoster" src=http://image.tmdb.org/t/p/w500/' + json.poster_path + ' />');
                   $('#title').html('<h3>' + json.title + '</h3>');
+                  $('#description').html(json.overview + '<br>&raquo; <a href="#">Read more</a>');
+                  $('#genre').html(json.genres[0].name); //behövs en foreach loop här
                   $('#release').html(json.release_date);
+                  $('#language').html(json.spoken_languages[0].name); //behövs en foreach loop här
+                  $('#runtime').html(json.runtime);
                   $('#score').html(json.vote_average);
 
                   });
