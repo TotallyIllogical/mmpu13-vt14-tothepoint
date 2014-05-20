@@ -1,6 +1,5 @@
     <div class="row">
 	      <div class="large-12 columns">
-	      	<div id="mylist"></div>
 	      	
 	      	<div class="panel" id="wrapper">
 		        <div class="row" id="test">
