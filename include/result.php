@@ -4,17 +4,16 @@
 	      	
 	      	<div class="panel" id="wrapper">
 		        <div class="row" id="test">
-
+        		   	
 		        	<div class="large-3 medium-3 columns" id="poster">
-	              		<img src="img/poster.jpg">
+		        		<section id="poster">
+		   				</section>
 		    	    </div>
 		        	
 		        	<div class="large-5 medium-5 columns">
-		        		<h3><a href="#">Das Leben der Anderen</a></h3>
-		                <p>In 1984 East Germany, Stasi officer Hauptmann Gerd Wiesler is assigned to spy on playwright Georg Dreyman. 
-		                	Wiesler and his team bug the apartment, set up surveillance equipment in an attic and begin reporting Dreyman's activities. 
-		                	Dreyman had escaped state scrutiny due to his pro-Communist views and international recognition. 
-		                	Wiesler soon learns the real reason behind the surveillance..
+		        		<section id="title">
+		   				</section>
+		                <p id="description">
 		                	<br>&raquo; <a href="#">Read more</a>
 		                </p>
 			        </div>
@@ -22,7 +21,7 @@
 			        <div class="large-4 medium-4 columns">
 		              <h5><a href="#">Information</a></h5>
 		              <strong>Genre:</strong> Drama / Thriller<br>
-		              <strong>Released:</strong> 2006<br>
+		              <strong>Released:</strong> <section id="release"></section><br>
 				      <strong>Language:</strong> German<br>
 		              <strong>Runtime:</strong> 137 minutes<br>
 			          <strong>Director:</strong> Florian Henckel von Donnersmarck<br>
@@ -52,7 +51,7 @@
 								</tr> 
 								<tr> 
 									<td class="center"><strong>Rating</strong></td> 
-									<td class="rating">7.7</td> 
+									<td class="rating"><section id="score"></section></td> 
 									<td class="rating">8.5</td> 
 									<td class="rating">93%</td> 
 								</tr> 

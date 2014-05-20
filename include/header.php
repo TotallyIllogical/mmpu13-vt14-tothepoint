@@ -30,8 +30,7 @@
 	      <input type="text" placeholder="Enter a movie title" id="term" />
 	      <button id="search">Find me a poster</button>
 	   </section>
-	   <section id="poster">
-	   </section>
+
         
         	<div class="large-8 small-9 columns">
 		      <input type="text" placeholder="Find Movie">
