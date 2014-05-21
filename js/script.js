@@ -26,7 +26,7 @@ $(document).ready(function(){
                 // Populera result-rutan (Dear f-ing Bob, the amount of code...)
                 $('#result').html('<div class="row"><div class="large-12 columns"><div class="panel" id="wrapper"><div class="row" id="test"><div class="large-3 medium-3 columns" id="poster"><section id="poster"></section></div><div class="large-5 medium-5 columns"><section id="title"></section><p id="description"></p></div><div class="large-4 medium-4 columns"><h5><a href="#">Information</a></h5><strong>Genre:</strong> <section id="genre"></section><strong>Released:</strong> <section id="release"></section><strong>Language:</strong> <section id="language"></section><strong>Runtime:</strong> <section id="runtime"></section><strong>Director:</strong> <section id="director"></section><strong>Writer:</strong> <section id="writer"></section><strong>Starring:</strong> <section id="starring"></section></div></div><!-- .row --><div class="row"><div class="large-12 columns"><table class="responsive" id="table-wrapper"><thead><tr><th class="center">Source</th><th class="center"><a href="http://www.themoviedb.org/" target="_blank"><img src="img/tmdb.png"></a></th><th class="center"><a href="http://www.imdb.com/" target="_blank"><img src="img/imdb.png"></a></th><th class="center"><a href="http://www.rottentomatoes.com/" target="_blank"><img src="img/rottentomatoes.png"></a></th></tr></thead><tbody><tr><td class="center"><strong>Maximum</strong></td><td class="center">10</td><td class="center">10</td><td class="center">100%</td></tr><tr><td class="center"><strong>Rating</strong></td><td class="rating"><section id="score"></section></td><td class="rating">8.5</td><td class="rating">93%</td></tr></tbody></table></div></div></div></div>d</div>')
 
-                console.log(json);
+                
                 // Använd id från sök-api:n för att hämta resten av informationen med hjälp av huvud-api:n, se nedan
                 var movieid= json.results[0].id;
                 
@@ -38,7 +38,14 @@ $(document).ready(function(){
                   $('#title').html('<h3>' + json.title + '</h3>');
                   // Här ska alternativ titlar skrivas ut
                   $('#description').html(json.overview + '<br>&raquo; <a href="https://www.themoviedb.org/movie/' + movieid + '">Read more</a>'); //Här behöver vi sätta in så "read more" länken öppnar en ny sida
-                  $('#genre').html(json.genres[0].name); //behövs en loop här eftersom de flesta filmer har med än en genre
+
+                  
+                  // console.log(json.genres);
+                  // json.genres.each(Object, function( name, val ) {
+                  //   $( "#genre" ).append( document.createTextNode( val ) );
+                  // });
+
+                  // $('#genre').html(json.genres[0].name); //behövs en loop här eftersom de flesta filmer har med än en genre
                   $('#release').html(json.release_date);
                   $('#language').html(json.spoken_languages[0].name); //behövs en loop här eftersom en film kan har flera språk
                   $('#runtime').html(json.runtime);
