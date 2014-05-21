@@ -1,3 +1,4 @@
+    <div id="result">
     <div class="row">
 	      <div class="large-12 columns">
 	      	
@@ -63,5 +64,5 @@
 	    	</div>
 	     </div>
 	 </div>
-
+</div>
 	

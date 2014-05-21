@@ -1,3 +1,5 @@
+// Vi bheöver skriva så att när man gör en ny sökning så resettar resultat-rutan
+
 $(document).ready(function(){
 
    $('#term').focus(function(){
@@ -12,16 +14,19 @@ $(document).ready(function(){
         var film = $('#term').val();
 
          if(film == ''){
-            // Om en personen inte skrivit något ska det här medelandet skrivas ut
-            $('#poster').html("<h2 class='loading'>Please type something in the searchfield.</h2>");
+            // Om en personen inte skrivit något skrivs det här medelandet ut
+            $('#result').html('<div class="row"><div class="large-12 columns"><div class="panel" id="wrapper"><div class="row" id="test"><h2 class="loading">Please type something in the searchfield.</h2></div></div></div></div>');
 
          } else {
             //Använder tmdb sök-api för att hitta filmer vars titel matchar det som eftersöks
             $.getJSON("http://api.themoviedb.org/3/search/movie?query=" + film + "&api_key=c9ec56f0f1ccf916a4baa2b711e5ce29", function(json) {
 
-              if (json != "Not Found"){
+              if (json.total_results != 0 || json.total_pages != 0){
+                console.log(json);
                 // Använd id från sök-api:n för att hämta resten av informationen med hjälp av huvud-api:n, se nedan
                 var movieid= json.results[0].id;
+                
+                // Den här getJSON hämtar basinformation så som titel, synopsis och poster
                 $.getJSON("https://api.themoviedb.org/3/movie/" + movieid + "?api_key=c9ec56f0f1ccf916a4baa2b711e5ce29", function(json) {
 
                   $('#poster').html('<h2 class="loading"></h2><img id="thePoster" src=http://image.tmdb.org/t/p/w500/' + json.poster_path + ' />'); //Här behövs det en if-sats som hämtar en placeholder bild ifall den poster inte hittas
@@ -36,16 +41,18 @@ $(document).ready(function(){
                   $('#score').html(json.vote_average);
 
                 });
-                // Den här biten fungerar inte
-                $.getJSON("https://api.themoviedb.org/3/movie/" + movieid + "casts?api_key=c9ec56f0f1ccf916a4baa2b711e5ce29", function(json2) {
-                  console.log(json2);
-                  $('#starring').html(json2[0].name); //Här behövs en loop för att hämta antalet skådespelarnamn du önskar
+                // Den här getJSON hämtar rollistan, manusförfattare och regisör
+                $.getJSON("https://api.themoviedb.org/3/movie/" + movieid + "/casts?api_key=c9ec56f0f1ccf916a4baa2b711e5ce29", function(json) {
+                  
+                  $('#starring').html(json.cast[0].name); //Här behövs en loop för att hämta antalet skådespelarnamn du vill visa
+                  $('#writer').html(); //Här behövs en if/when sats där ett namn hämtas om "job" matchar writer
+                  $('#director').html(); //Här behövs en if/when sats där ett namn hämtas om "job" matchar director
+
                 });
+
+
                 } else {
-                   $.getJSON("http://api.themoviedb.org/3/search/movie?query=" + film + "&api_key=c9ec56f0f1ccf916a4baa2b711e5ce29", function(json) {
-                      console.log(json);
-                      $('#poster').html('<h2 class="loading">We are afraid nothing was found for that search.</h2>');
-                   });
+                  $('#result').html('<div class="row"><div class="large-12 columns"><div class="panel" id="wrapper"><div class="row" id="test"><h2 class="loading">We are afraid nothing was found for that search.</h2></div></div></div></div>');
                 }
              });
 
