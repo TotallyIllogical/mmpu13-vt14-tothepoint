@@ -1,4 +1,4 @@
-// Vi bheöver skriva så att när man gör en ny sökning så resettar resultat-rutan
+// Vi behöver skriva så att när man gör en ny sökning så resettar resultat-rutan
 
 $(document).ready(function(){
 
@@ -9,7 +9,7 @@ $(document).ready(function(){
       }
    });
 
-   var getPoster = function(){
+   var getMovies = function(){
 
         var film = $('#term').val();
 
@@ -74,10 +74,10 @@ $(document).ready(function(){
         return false;
    }
 
-   $('#search').click(getPoster);
+   $('#search').click(getMovies);
    $('#term').keyup(function(event){
        if(event.keyCode == 13){
-           getPoster();
+           getMovies();
        }
    });
 
