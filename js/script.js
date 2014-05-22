@@ -37,8 +37,11 @@ $(document).ready(function(){
 
                   $('#title').html('<h2>' + json.title + '</h2>');
 
-                  // Hämtar originaltitel   
-                  $('#orgTitle').html('<h5>' + json.original_title + ' <em>(original title)</em>' + '</h5>');                                                                                              
+                  // Hämtar originaltitel  
+
+                  if (json.title != json.original_title) {
+                    $('#orgTitle').html('<h5>' + json.original_title + ' <em>(original title)</em>' + '</h5>');
+                  }                                                                                              
                   
                   var words = json.overview;                
                   words = words.substr(0,320);
