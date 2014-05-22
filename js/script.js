@@ -36,8 +36,10 @@ $(document).ready(function(){
                   $('#poster').html('<h2 class="loading"></h2><img id="thePoster" src=http://image.tmdb.org/t/p/w500/' + json.poster_path + ' />'); //Här behövs det en if-sats som hämtar en placeholder bild ifall den poster inte hittas
 
                   $('#title').html('<h3>' + json.title + '</h3>');
-                  // Här ska alternativ titlar skrivas ut                                                                       
-                  $('#description').html(json.overview + '<br>&raquo; <a href="https://www.themoviedb.org/movie/' + movieid + '" target="_blank">Read more</a>'); //Här behöver vi sätta in så "read more" länken öppnar en ny sida
+                  // Här ska alternativ titlar skrivas ut                                                                                 
+                  var words = json.overview;                
+                  words = words.substr(0,370);
+                  $("#description").html(words + '<br>&raquo; <a href="https://www.themoviedb.org/movie/' + movieid + '" target="_blank">Read more</a>');
                   
                   $.each(json.genres, function( index, value ) {
                     $( "#genre" ).append( document.createTextNode( value.name + ", " ) );
