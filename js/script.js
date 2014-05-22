@@ -38,7 +38,6 @@ $(document).ready(function(){
                   $('#title').html('<h2>' + json.title + '</h2>');
 
                   // Hämtar originaltitel  
-
                   if (json.title != json.original_title) {
                     $('#orgTitle').html('<h5>' + json.original_title + ' <em>(original title)</em>' + '</h5>');
                   }                                                                                              
