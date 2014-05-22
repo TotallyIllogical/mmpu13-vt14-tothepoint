@@ -40,12 +40,15 @@ $(document).ready(function(){
                   $('#description').html(json.overview + '<br>&raquo; <a href="https://www.themoviedb.org/movie/' + movieid + '">Read more</a>'); //Här behöver vi sätta in så "read more" länken öppnar en ny sida
                   
                   $.each(json.genres, function( index, value ) {
-                    console.log(value);
                     $( "#genre" ).append( document.createTextNode( value.name + ", " ) );
                   });
 
                   $('#release').html(json.release_date);
-                  $('#language').html(json.spoken_languages[0].name); //behövs en loop här eftersom en film kan har flera språk
+
+                  $.each(json.spoken_languages, function( index, value ) {
+                    $( "#language" ).append( document.createTextNode( value.name + ", " ) );
+                  });
+
                   $('#runtime').html(json.runtime);
                   $('#score').html(json.vote_average);
 
