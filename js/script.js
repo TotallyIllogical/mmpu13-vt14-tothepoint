@@ -37,10 +37,17 @@ $(document).ready(function(){
 
                   $('#title').html('<h3>' + json.title + '</h3>');
                   // Här ska alternativ titlar skrivas ut                                                                                 
+                  
                   var words = json.overview;                
                   words = words.substr(0,320);
-                  $("#description").html(words + '<br>&raquo; <a href="https://www.themoviedb.org/movie/' + movieid + '" target="_blank">Read more</a>');
                   
+                  if (words.length == 320) {
+                    words += '...';
+                  };
+
+                  $("#description").html(words + '<br>&raquo; <a href="https://www.themoviedb.org/movie/' + movieid + '" target="_blank">Read more</a>');
+
+
                   $.each(json.genres, function( index, value ) {
                     $( "#genre" ).append( document.createTextNode( value.name + ", " ) );
                   });
