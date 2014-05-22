@@ -40,10 +40,10 @@ $(document).ready(function(){
                   $('#description').html(json.overview + '<br>&raquo; <a href="https://www.themoviedb.org/movie/' + movieid + '">Read more</a>'); //Här behöver vi sätta in så "read more" länken öppnar en ny sida
 
                   
-                  // console.log(json.genres);
-                  // json.genres.each(Object, function( name, val ) {
-                  //   $( "#genre" ).append( document.createTextNode( val ) );
-                  // });
+                  console.log(json.genres);
+                  $.each(json.genres, function( i, val ) {
+                    $( "#genre" ).append( document.createTextNode( val ) );
+                  });
 
                   // $('#genre').html(json.genres[0].name); //behövs en loop här eftersom de flesta filmer har med än en genre
                   $('#release').html(json.release_date);
