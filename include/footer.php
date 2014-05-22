@@ -5,7 +5,7 @@
             
                 <p id="footer">This product uses the TMDb API but is not endorsed or certified by 
                     <a href="http://www.themoviedb.org/" target="_blank" title="The Movie Database">TMDb</a><br><br>
-                    <a href="http://www.themoviedb.org/"><img src="img/tmdb-logo.png" title="The Movie Database"></a>
+                    <a href="http://www.themoviedb.org/"><img src="img/tmdb-logo.png" alt="The Movie Database"></a>
                 </p>
 
         </div>
