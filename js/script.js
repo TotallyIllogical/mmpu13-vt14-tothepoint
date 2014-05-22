@@ -3,9 +3,9 @@
 $(document).ready(function(){
 
    $('#term').focus(function(){
-      var full = $("#poster").has("img").length ? true : false;
+      var full = $("#result").has("img").length ? true : false;
       if(full == false){
-         $('#poster').empty();
+         $('#result').empty();
       }
    });
 
@@ -38,16 +38,12 @@ $(document).ready(function(){
                   $('#title').html('<h3>' + json.title + '</h3>');
                   // Här ska alternativ titlar skrivas ut
                   $('#description').html(json.overview + '<br>&raquo; <a href="https://www.themoviedb.org/movie/' + movieid + '">Read more</a>'); //Här behöver vi sätta in så "read more" länken öppnar en ny sida
-
-                  
                   
                   $.each(json.genres, function( index, value ) {
-                    console.log(value.name);
+                    console.log(value);
                     $( "#genre" ).append( document.createTextNode( value.name + ", " ) );
                   });
 
-
-                  // $('#genre').html(json.genres[0].name); //behövs en loop här eftersom de flesta filmer har med än en genre
                   $('#release').html(json.release_date);
                   $('#language').html(json.spoken_languages[0].name); //behövs en loop här eftersom en film kan har flera språk
                   $('#runtime').html(json.runtime);
@@ -60,6 +56,7 @@ $(document).ready(function(){
                   $('#starring').html(json.cast[0].name); //Här behövs en loop för att hämta antalet skådespelarnamn du vill visa
                   $('#writer').html(); //Här behövs en if-sats där ett namn hämtas om "job" matchar writer
                   $('#director').html(); //Här behövs en if-sats där ett namn hämtas om "job" matchar director
+                  console.log(json);
 
                 });
 
