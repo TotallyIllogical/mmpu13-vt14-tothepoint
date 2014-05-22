@@ -26,7 +26,7 @@
         	<h1><?php echo $pageTitle;?></h1>
         </div>
 
-	   <section id="fetch">
+	   <section>
 	   	<div class="large-8 small-9 columns">
 	      <input type="text" placeholder="Enter a movie title" id="term" />
 	  	</div>
