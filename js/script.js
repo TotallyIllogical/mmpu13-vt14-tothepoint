@@ -22,7 +22,7 @@ $(document).ready(function(){
             $.getJSON("http://api.themoviedb.org/3/search/movie?query=" + film + "&api_key=c9ec56f0f1ccf916a4baa2b711e5ce29", function(json) {
 
               if (json.total_results != 0 || json.total_pages != 0){
-                
+
                 // Här ska $.each-loopen börja för att visa flera resultat
 
                 // Populera result-rutan (Dear f-ing Bob, the amount of code...)
@@ -34,6 +34,8 @@ $(document).ready(function(){
                 
                 // Den här getJSON hämtar basinformation så som titel, synopsis och poster
                 $.getJSON("https://api.themoviedb.org/3/movie/" + movieid + "?api_key=c9ec56f0f1ccf916a4baa2b711e5ce29", function(json) {
+
+                  // Den här jsonen har imdbs id för filmen, json.imdb_id;
 
                   $('#poster').html('<h2 class="loading"></h2><img id="thePoster" src=http://image.tmdb.org/t/p/w500/' + json.poster_path + ' />'); //Här behövs det en if-sats som hämtar en placeholder bild ifall den poster inte hittas
 
