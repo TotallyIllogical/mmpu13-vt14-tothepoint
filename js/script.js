@@ -69,7 +69,7 @@ $(document).ready(function(){
                   $.each(json.crew, function( index, value ) {
                     if(value.job == "Writer" || value.job == "Author" || value.job == "Screenplay"){
                       $( "#writer" ).append( document.createTextNode( value.name + ", " ) );
-                    } //Vi behöver sätta en maxgräns här, det finns många filmer med idiotiska mängder writers.
+                    } //Vi behöver sätta en maxgräns här, det finns många filmer med idiotiska mängder writers, vi behöver även ta bort dubbletter.
                     if(value.job == "Director"){
                       $( "#director" ).append( document.createTextNode( value.name ) );
                     }
