@@ -43,17 +43,70 @@ h1 {
 
 }
 
-input#term {
-	border: 0;
-	border-radius: 5px;
+/*---------------------------------------------------------
+	SEARCH BAR
+---------------------------------------------------------*/
+
+#search-wrapper {
 	width: 100%;
+	margin-bottom: 2px;
+}
+
+#search-left {
+	width: 80%;
+	float: left;
+}
+
+#search-right {
+	margin-left: 80%; /* Change this to whatever the width of the left column is*/
+}
+
+.clear {
+      clear: both;
+ }
+
+input#term {
+	padding-left: 20px;
+	border-top-left-radius:  5px;
+	border-bottom-left-radius: 5px;
+    border: 0;
     height: 40px;
 }
 
 button#search {
-	padding: 8px;
-	margin: 0;
+	padding: 0;
     height: 40px;
-	border-radius: 5px;
+ 	border-top-right-radius:  5px;
+	border-bottom-right-radius: 5px;
+ 	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+	border: 0;
 }
+
+ /*---------------------------------------------------------
+	BUTTONS
+---------------------------------------------------------*/
+
+.button {
+	background: #2ba6cb;
+	color: #fff;
+	width: 20%;
+	padding: 12px;
+	font-size: 13px;
+	border-radius: 5px;
+	margin-bottom: 20px;
+}
+
+
+/*---------------------------------------------------------
+	MEDIA QUERIES
+---------------------------------------------------------*/
+
+/* max-width 640px, mobile-only styles, use when QAing mobile issues */
+@media only screen and (max-width: 40em) { 
+	#logo {
+	  width: 100%;
+	}
+} 
+
 

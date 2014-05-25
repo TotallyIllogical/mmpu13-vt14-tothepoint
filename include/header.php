@@ -3,8 +3,8 @@
 	<head>
 		<title><?php echo $pageTitle;?></title>	    
 	    <meta charset="utf-8">
-    	<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=no;">
-    	
+    	<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=no;">  
+
     	<!-- CSS -->
 		<link rel="stylesheet" href="css/foundation.css">
 	    <link rel="stylesheet" href="css/style.css">
@@ -15,7 +15,6 @@
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		<script src="js/script.js"></script>  
 	    <script src="js/vendor/modernizr.js"></script>	
-		<script type="text/javascript" src="js/responsive-tables.js"></script>
 	</head>
 	
 	<body>
@@ -26,14 +25,21 @@
         	<h1><?php echo $pageTitle;?></h1>
         </div>
 
-	   <section>
-	   	<div class="large-8 small-9 columns">
-	      <input type="text" placeholder="Enter a movie title" id="term" />
-	  	</div>
-	  	<div class="large-4 small-3 columns">
-	      <button id="search" class="alert button expand">Search</button>
-	  	</div>
-	   </section>
+    	<div class="large-12 medium-12 columns">
 
-    
+	    	<div id="search-wrapper">
+
+	    		<div id="search-left">
+	    			<input type="text" placeholder="Enter a movie title" id="term" />
+	    		</div>
+	    
+			    <div id="search-right">
+			    	<button id="search" class="alert button expand">Search</button>
+			    </div>
+
+	    		<div class="clear"></div>
+
+		</div>
+	</div>
+
     </div><!-- .row -->
