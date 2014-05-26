@@ -40,13 +40,16 @@ $(document).ready(function(){
 
                   $('#title').html('<h3>' + json.title + '</h3>');
 
-                  // Hämtar originaltitel   
-                  $('#orgTitle').html('<h5>' + json.original_title + ' <em>(original title)</em>' + '</h5>');                                                                                         
-                  var words = json.overview;                
+                  // Hämtar originaltitel
+                  if(json.original_title || json.original_title != json.title){
+                    $('#orgTitle').html('<h5>' + json.original_title + ' <em>(original title)</em>' + '</h5>');
+                  };
+                                                                                                           
+                  var words = json.overview;
                   words = words.substr(0,370);
                   if(words.length == 370){
-                    words += "..."
-                  }
+                    words += "...";
+                  };
 
                   $("#description").html(words + '<br>&raquo; <a href="https://www.themoviedb.org/movie/' + movieid + '" target="_blank">Read more</a>');
 
