@@ -3,7 +3,7 @@
 $(document).ready(function(){
 
    $('#term').focus(function(){
-      var full = $("#result").has("img").length ? true : false;
+      var full = $(".result").has("img").length ? true : false;
       if(full == false){
          $('.result').empty();
       }
