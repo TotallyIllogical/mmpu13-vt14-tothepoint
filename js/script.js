@@ -66,8 +66,14 @@ $(document).ready(function(){
                 });
                 // Den här getJSON hämtar rollistan, manusförfattare och regisör
                 $.getJSON("https://api.themoviedb.org/3/movie/" + movieid + "/casts?api_key=c9ec56f0f1ccf916a4baa2b711e5ce29", function(json) {
-                  $('#starring').html(json.cast[0].name); //Här behövs en loop för att hämta antalet skådespelarnamn du vill visa
-                  console.log(json.crew);
+                  // Först en tom array, sen behövs en for-loop som ska hämta ut fem namn och sätta dem i arrayen, sen ska de skrivas ut på rätt plats.
+                  var actornames = [];
+                  for(var i = 0; i < 5; i++){
+                    actornames.push(json.cast[i].name);
+                  }
+                  var actorlist = actornames.join(", ");
+
+                  $('#starring').append( document.createTextNode( actorlist ) ); 
                   $.each(json.crew, function( index, value ) {
 
                     switch (value.job) {
