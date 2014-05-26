@@ -49,10 +49,15 @@ $(document).ready(function(){
                   }
 
                   $("#description").html(words + '<br>&raquo; <a href="https://www.themoviedb.org/movie/' + movieid + '" target="_blank">Read more</a>');
-                  
+
+                  var genres = [];
                   $.each(json.genres, function( index, value ) {
-                    $( "#genre" ).append( document.createTextNode( value.name + ", " ) );
+                    genres.push(value.name);
+                    return genres;
                   });
+                  var genrelist = genres.join(", ");
+
+                  $('#genre').append( document.createTextNode( genrelist ) );
 
                   $('#release').html(json.release_date);
 
