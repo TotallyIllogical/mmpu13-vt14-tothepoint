@@ -69,7 +69,7 @@ $(document).ready(function(){
                   });
 
                   $('.runtime').html(json.runtime);
-                  $('.score').html(json.vote_average);
+                  $('.tmdb-score').html(json.vote_average);
 
                 });
                 // Den här getJSON hämtar rollistan, manusförfattare och regisör
