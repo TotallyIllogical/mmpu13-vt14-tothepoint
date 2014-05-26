@@ -56,7 +56,6 @@ $(document).ready(function(){
                     return genres;
                   });
                   var genrelist = genres.join(", ");
-
                   $('#genre').append( document.createTextNode( genrelist ) );
 
                   $('#release').html(json.release_date);
