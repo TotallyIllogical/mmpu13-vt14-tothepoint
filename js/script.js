@@ -41,7 +41,7 @@ $(document).ready(function(){
                   $('.title').html('<h3>' + json.title + '</h3>');
 
                   // Hämtar originaltitel
-                  if(json.original_title == true || json.original_title != json.title){
+                  if(json.original_title == true && json.original_title != json.title){
                     $('.orgTitle').html('<h5>' + json.original_title + ' <em>(original title)</em>' + '</h5>');
                   };
                                                                                                            
@@ -53,56 +53,58 @@ $(document).ready(function(){
 
                   $(".description").html(words);
 
+                  $.each(json.spoken_languages, function( index, value ) {
+                    $( ".language" ).append( document.createTextNode( value.name + ", " ) );
+                  });
+
+                  $('.release').html(json.release_date);
+
+                  $('.runtime').html(json.runtime + " min");
+
                   var genres = [];
                   $.each(json.genres, function( index, value ) {
                     genres.push(value.name);
                     return genres;
                   });
                   var genrelist = genres.join(" / ");
-
                   $('.genre').append( document.createTextNode( genrelist ) );
 
-                  $('.release').html(json.release_date);
-
-                  $.each(json.spoken_languages, function( index, value ) {
-                    $( ".language" ).append( document.createTextNode( value.name + ", " ) );
-                  });
-
-                  $('.runtime').html(json.runtime);
                   $('.tmdb-score').html(json.vote_average);
 
                 });
                 // Den här getJSON hämtar rollistan, manusförfattare och regisör
                 $.getJSON("https://api.themoviedb.org/3/movie/" + movieid + "/casts?api_key=c9ec56f0f1ccf916a4baa2b711e5ce29", function(json) {
-                  // Först en tom array, sen behövs en for-loop som ska hämta ut fem namn och sätta dem i arrayen, sen ska de skrivas ut på rätt plats.
+                  var directors = [];
+                  var writers =[];
+                  $.each(json.crew, function( index, value ) {
+                    
+                    if(value.job == "Director"){
+                      for(var i = 0; i > 1; i++){
+                        directors.push(value[i].name);
+                      }
+                    }
+                    if(value.job == "Writer"){
+                      writers.push(value.name);
+                    }else if(value.job == "Author"){
+                      writers.push(value.name);
+                    }else if(value.job == "Screenplay"){
+                      writers.push(value.name);
+                    }
+                  });
+                  console.log(writers);
+
+                  var directorlist = directors.join(", ");
+                  $(".director").append( document.createTextNode(directorlist));
+
+                  var writerslist = writers.join(", ")
+                  $( ".writer" ).append( document.createTextNode(writerslist));
+
                   var actornames = [];
                   for(var i = 0; i < 5; i++){
                     actornames.push(json.cast[i].name);
                   }
                   var actorlist = actornames.join(", ");
-
                   $('.starring').append( document.createTextNode( actorlist ) ); 
-                  $.each(json.crew, function( index, value ) {
-
-                    switch (value.job) {
-                      case "Writer":
-                        $( ".writer" ).append( document.createTextNode( value.name + ", " ) );
-                        break;
-                      case "Author":
-                        $( ".writer" ).append( document.createTextNode( value.name + ", " ) );
-                        break;
-                      case "Screenplay":
-                        $( ".writer" ).append( document.createTextNode( value.name + ", " ) );
-                        break;
-                      default: "No name found";
-                    }
-
-
-                    if(value.job == "Director"){
-                      $( ".director" ).append( document.createTextNode( value.name ) );
-                    }
-                  });
-
                 });
 
 
