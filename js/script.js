@@ -36,13 +36,13 @@ $(document).ready(function(){
 
                   // Den här jsonen har imdbs id för filmen, json.imdb_id;
 
-                  $('#poster').html('<h2 class="loading"></h2><img id="thePoster" src=http://image.tmdb.org/t/p/w500/' + json.poster_path + ' />'); //Här behövs det en if-sats som hämtar en placeholder bild ifall den poster inte hittas
+                  $('.poster').html('<h2 class="loading"></h2><img id="thePoster" src=http://image.tmdb.org/t/p/w500/' + json.poster_path + ' />'); //Här behövs det en if-sats som hämtar en placeholder bild ifall den poster inte hittas
 
-                  $('#title').html('<h3>' + json.title + '</h3>');
+                  $('.title').html('<h3>' + json.title + '</h3>');
 
                   // Hämtar originaltitel
                   if(json.original_title == true || json.original_title != json.title){
-                    $('#orgTitle').html('<h5>' + json.original_title + ' <em>(original title)</em>' + '</h5>');
+                    $('.orgTitle').html('<h5>' + json.original_title + ' <em>(original title)</em>' + '</h5>');
                   };
                                                                                                            
                   var words = json.overview;
@@ -51,7 +51,7 @@ $(document).ready(function(){
                     words += "...";
                   };
 
-                  $("#description").html(words + '<br>&raquo; <a href="https://www.themoviedb.org/movie/' + movieid + '" target="_blank">Read more</a>');
+                  $(".description").html(words + '<br>&raquo; <a href="https://www.themoviedb.org/movie/' + movieid + '" target="_blank">Read more</a>');
 
                   var genres = [];
                   $.each(json.genres, function( index, value ) {
@@ -60,16 +60,16 @@ $(document).ready(function(){
                   });
                   var genrelist = genres.join(" / ");
 
-                  $('#genre').append( document.createTextNode( genrelist ) );
+                  $('.genre').append( document.createTextNode( genrelist ) );
 
-                  $('#release').html(json.release_date);
+                  $('.release').html(json.release_date);
 
                   $.each(json.spoken_languages, function( index, value ) {
-                    $( "#language" ).append( document.createTextNode( value.name + ", " ) );
+                    $( ".language" ).append( document.createTextNode( value.name + ", " ) );
                   });
 
-                  $('#runtime').html(json.runtime);
-                  $('#score').html(json.vote_average);
+                  $('.runtime').html(json.runtime);
+                  $('.score').html(json.vote_average);
 
                 });
                 // Den här getJSON hämtar rollistan, manusförfattare och regisör
@@ -81,25 +81,25 @@ $(document).ready(function(){
                   }
                   var actorlist = actornames.join(", ");
 
-                  $('#starring').append( document.createTextNode( actorlist ) ); 
+                  $('.starring').append( document.createTextNode( actorlist ) ); 
                   $.each(json.crew, function( index, value ) {
 
                     switch (value.job) {
                       case "Writer":
-                        $( "#writer" ).append( document.createTextNode( value.name + ", " ) );
+                        $( ".writer" ).append( document.createTextNode( value.name + ", " ) );
                         break;
                       case "Author":
-                        $( "#writer" ).append( document.createTextNode( value.name + ", " ) );
+                        $( ".writer" ).append( document.createTextNode( value.name + ", " ) );
                         break;
                       case "Screenplay":
-                        $( "#writer" ).append( document.createTextNode( value.name + ", " ) );
+                        $( ".writer" ).append( document.createTextNode( value.name + ", " ) );
                         break;
                       default: "No name found";
                     }
 
 
                     if(value.job == "Director"){
-                      $( "#director" ).append( document.createTextNode( value.name ) );
+                      $( ".director" ).append( document.createTextNode( value.name ) );
                     }
                   });
 
