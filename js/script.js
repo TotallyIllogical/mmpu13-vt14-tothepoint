@@ -51,7 +51,7 @@ $(document).ready(function(){
                     words += "...";
                   };
 
-                  $(".description").html(words + '<br>&raquo; <a href="https://www.themoviedb.org/movie/' + movieid + '" target="_blank">Read more</a>');
+                  $(".description").html(words);
 
                   var genres = [];
                   $.each(json.genres, function( index, value ) {
