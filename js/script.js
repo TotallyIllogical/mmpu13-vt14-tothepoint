@@ -41,8 +41,7 @@ $(document).ready(function(){
                   $('#title').html('<h3>' + json.title + '</h3>');
 
                   // Hämtar originaltitel   
-                  $('#orgTitle').html('<h5>' + json.original_title + ' <em>(original title)</em>' + '</h5>');                                                                                                                                                                              
-                  
+                  $('#orgTitle').html('<h5>' + json.original_title + ' <em>(original title)</em>' + '</h5>');                                                                                         
                   var words = json.overview;                
                   words = words.substr(0,370);
                   if(words.length == 370){
@@ -68,11 +67,22 @@ $(document).ready(function(){
                 // Den här getJSON hämtar rollistan, manusförfattare och regisör
                 $.getJSON("https://api.themoviedb.org/3/movie/" + movieid + "/casts?api_key=c9ec56f0f1ccf916a4baa2b711e5ce29", function(json) {
                   $('#starring').html(json.cast[0].name); //Här behövs en loop för att hämta antalet skådespelarnamn du vill visa
-                  
+                  console.log(json.crew);
                   $.each(json.crew, function( index, value ) {
-                    if(value.job == "Writer" || value.job == "Author" || value.job == "Screenplay"){
-                      $( "#writer" ).append( document.createTextNode( value.name + ", " ) );
-                    } //Vi behöver sätta en maxgräns här, det finns många filmer med idiotiska mängder writers, vi behöver även ta bort dubbletter.
+
+                    switch (value.job) {
+                      case "Writer":
+                        $( "#writer" ).append( document.createTextNode( value.name + ", " ) );
+                        break;
+                      case "Author":
+                        $( "#writer" ).append( document.createTextNode( value.name + ", " ) );
+                        break;
+                      case "Screenplay":
+                        $( "#writer" ).append( document.createTextNode( value.name + ", " ) );
+                        break;
+                      default: "No name found";
+                    }
+
                     if(value.job == "Director"){
                       $( "#director" ).append( document.createTextNode( value.name ) );
                     }
