@@ -33,7 +33,7 @@ h1 {
 	color: #fff;
 }
 
-h2, h4, h5, h6 {
+h2, h3, h4, h5, h6 {
 	color: #289cbf !important; 
 }
 
@@ -148,6 +148,7 @@ button#search {
 	font-size: 13px;
 	border-radius: 5px;
 	margin-bottom: 20px;
+	margin-right: 10px;
 }
 
 /*---------------------------------------------------------
