@@ -15,7 +15,7 @@ $(document).ready(function(){
 
          if(film == ''){
             // Om en personen inte skrivit något skrivs det här medelandet ut
-            $('.result').html('<div class="row"><div class="large-12 columns"><div class="panel" id="wrapper"><div class="row" id="test"><h2 class="loading">Please type something in the searchfield.</h2></div></div></div></div>');
+            $('.result').html('<div class="row"><div class="large-12 columns"><div class="panel wrapper"><div class="row"><h2>Please type something in the searchfield.</h2></div></div></div></div>');
 
          } else {
             //Använder tmdb sök-api för att hitta filmer vars titel matchar det som eftersöks
@@ -26,7 +26,7 @@ $(document).ready(function(){
                 // Här ska $.each-loopen börja för att visa flera resultat
 
                 // Populera result-rutan (Dear f-ing Bob, the amount of code...)
-                $('.result').html('<div class="row"><div class="large-12 columns"><div class="panel" id="wrapper"><div class="row" id="test"><div class="large-3 medium-3 columns" id="poster"></div><div class="large-5 medium-5 columns"><section id="title"></section><section id="orgTitle"></section><p id="description"></p></div><div class="large-4 medium-4 columns"><h5><a href="#">Information</a></h5><strong>Genre:</strong> <section id="genre"></section><strong>Released:</strong> <section id="release"></section><strong>Language:</strong> <section id="language"></section><strong>Runtime:</strong> <section id="runtime"></section><strong>Director:</strong> <section id="director"></section><strong>Writer:</strong> <section id="writer"></section><strong>Starring:</strong> <section id="starring"></section></div></div><!-- .row --><div class="row"><div class="large-12 columns"><table class="responsive" id="table-wrapper"><thead><tr><th class="center">Source</th><th class="center"><a href="http://www.themoviedb.org/" target="_blank"><img src="img/tmdb.png"></a></th><th class="center"><a href="http://www.imdb.com/" target="_blank"><img src="img/imdb.png"></a></th><th class="center"><a href="http://www.rottentomatoes.com/" target="_blank"><img src="img/rottentomatoes.png"></a></th></tr></thead><tbody><tr><td class="center"><strong>Maximum</strong></td><td class="center">10</td><td class="center">10</td><td class="center">100%</td></tr><tr><td class="center"><strong>Rating</strong></td><td class="rating" id="score"></td><td class="rating">8.5</td><td class="rating">93%</td></tr></tbody></table></div></div></div></div>d</div>');
+                $('.result').html('<div class="row"><div class="large-12 columns"><div class="panel wrapper"><div class="row"><div class="large-4 medium-4 columns poster"></div><article class="large-8 medium-8 columns"><h2 class="title"></h2><h3 class="org-title orgtitle"></h3><p class="description"></p><h4>Information</h4><strong>Language:</strong> <div class="info language"></div><strong>Year:</strong> <div class="info release"></div><strong>Runtime:</strong> <div class="info runtime"></div><br><strong>Genre:</strong> <div class="info genre"></div><br><strong>Director:</strong> <div class="info director"></div><br><strong>Writer:</strong> <div class="info writer"></div><br><strong>Starring:</strong> <div class="info starring"></div><div class="buttons-wrapper"><a href="#" class="button">Read more &raquo;</a><a href="#" class="button">Watch trailer &raquo;</a></div></article><!-- .8-columns --></div><!-- .row --><div class="row"><div class="large-12 columns"><table class="responsive" id="table-wrapper"><thead><tr><th class="center strong">Source</th><th class="center"><a href="http://www.themoviedb.org/" target="_blank"><img src="img/tmdb-logo1.png" alt="The Movie Database" class="logo"></a></th> <th class="center"><a href="http://www.imdb.com/" target="_blank"><img src="img/imdb-logo.png" alt="IMDb" class="logo"></a></th><th class="center"><a href="http://www.rottentomatoes.com/" target="_blank"><img src="img/rottentomatoes.png" alt="Rotten Tomatoes" class="logo"></a></th></tr></thead><tbody><tr><td class="center strong">Maximum</td><td class="center">10</td><td class="center">10</td><td class="center">100%</td></tr><tr><td class="center strong">Rating</td><td class="rating center tmdb-score"></td><td class="rating center imdb-score"></td><td class="rating center rt-score"></td></tr></tbody></table></div><!-- .row --></div><!-- .large-12 columns --></div><!-- .panel-wrapper --></div><!-- .large-12 columns --></div><!-- .row -->');
            
                 // Använd id från sök-api:n för att hämta resten av informationen med hjälp av huvud-api:n, se nedan
                 var movieid= json.results[0].id;
@@ -107,14 +107,14 @@ $(document).ready(function(){
 
 
                 } else {
-                  $('#result').html('<div class="row"><div class="large-12 columns"><div class="panel" id="wrapper"><div class="row" id="test"><h2 class="loading">We are afraid nothing was found for that search.</h2></div></div></div></div>');
+                  $('#result').html('<div class="row"><div class="large-12 columns"><div class="panel wrapper"><div class="row"><h2">We are afraid nothing was found for that search.</h2></div></div></div></div>');
                 }
              });
 
           }
 
         return false;
-   }
+   };
 
    $('#search').click(getMovies);
    $('#term').keyup(function(event){
