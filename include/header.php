@@ -10,8 +10,8 @@
 	    <link rel="stylesheet" href="css/style.css">
 		<link type="text/css" media="screen" rel="stylesheet" href="css/responsive-tables.css">	
     	
-    	<!-- JS -->	   	
-	   	
+    	<!-- JS -->	
+  		<script type="text/javascript" src="js/responsive-tables.js"></script>   	   	
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		<script src="js/script.js"></script>  
 	    <script src="js/vendor/modernizr.js"></script>	
@@ -19,18 +19,17 @@
 	
 	<body>
 
- 	<div class="row">
+ 	<header class="row">
 
     	<div class="large-12 medium-12 columns">
         	<h1><?php echo $pageTitle;?></h1>
         </div>
 
     	<div class="large-12 medium-12 columns">
-
 	    	<div id="search-wrapper">
 
 	    		<div id="search-left">
-	    			<input type="text" placeholder="Enter a movie title" id="term" />
+	    			<input type="text" placeholder="Enter a movie title" id="term">
 	    		</div>
 	    
 			    <div id="search-right">
@@ -39,7 +38,7 @@
 
 	    		<div class="clear"></div>
 
-		</div>
-	</div>
+			</div><!-- .search-wrapper -->
+		</div><!-- .large-12 medium-12 columns -->
 
-    </div><!-- .row -->
+    </header><!-- .row -->
