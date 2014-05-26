@@ -33,11 +33,12 @@ h1 {
 	color: #fff;
 }
 
-h2, h3, h4, h5, h6 {
+h2, h4, h5, h6 {
 	color: #289cbf !important; 
 }
 
 h2 {
+	color: #289cbf !important;
 	font-size: 28px !important;
 }
 
