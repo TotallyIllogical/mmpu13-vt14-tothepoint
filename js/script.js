@@ -55,7 +55,8 @@ $(document).ready(function(){
                     genres.push(value.name);
                     return genres;
                   });
-                  var genrelist = genres.join(", ");
+                  var genrelist = genres.join(" / ");
+
                   $('#genre').append( document.createTextNode( genrelist ) );
 
                   $('#release').html(json.release_date);
@@ -92,6 +93,7 @@ $(document).ready(function(){
                         break;
                       default: "No name found";
                     }
+
 
                     if(value.job == "Director"){
                       $( "#director" ).append( document.createTextNode( value.name ) );
