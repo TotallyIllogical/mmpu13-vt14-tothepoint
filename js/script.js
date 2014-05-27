@@ -15,7 +15,7 @@ $(document).ready(function(){
 
     if(film == ''){
       // Om en personen inte skrivit något skrivs det här medelandet ut
-      $('.result').html('<div class="row"><div class="large-12 columns"><div class="panel wrapper"><div class="row"><h3>Please type something in the searchfield.</h4></div></div></div></div>');
+      $('.result').html('<div class="row"><div class="large-12 columns"><div class="panel wrapper"><div class="row"><h3>Please type something in the searchfield.</h3></div></div></div></div>');
 
     } else {
       //Använder tmdb sök-api för att hitta filmer vars titel matchar det som eftersöks
@@ -86,7 +86,7 @@ $(document).ready(function(){
           $.getJSON("https://api.themoviedb.org/3/movie/" + movieid + "/casts?api_key=c9ec56f0f1ccf916a4baa2b711e5ce29", function(json) {
             var directors = [];
             var writers =[];
-            console.log(json.crew);
+
             $.each(json.crew, function( index, value ) {
               if(value.job == "Director"){
                 directors.push(value.name);
@@ -106,9 +106,13 @@ $(document).ready(function(){
                 }
               }
             });
+
             var directorlist = directors.join(", ");
             $(".director").append( document.createTextNode(directorlist));
 
+            if(writers.length == 0){
+              writers.push("No name found");
+            }
             var writerslist = writers.join(", ");
             $( ".writer" ).append( document.createTextNode(writerslist));
 
@@ -121,7 +125,7 @@ $(document).ready(function(){
           });
 
         } else {
-          $('#result').html('<div class="row"><div class="large-12 columns"><div class="panel wrapper"><div class="row"><h2">We are afraid nothing was found for that search.</h2></div></div></div></div>');
+          $('.result').html('<div class="row"><div class="large-12 columns"><div class="panel wrapper"><div class="row"><h3>We are afraid nothing was found for that search.</h3></div></div></div></div>');
         }
       });
     }
