@@ -15,7 +15,7 @@ $(document).ready(function(){
 
          if(film == ''){
             // Om en personen inte skrivit något skrivs det här medelandet ut
-            $('.result').html('<div class="row"><div class="large-12 columns"><div class="panel wrapper"><div class="row"><div class="large-12 columns"><h3>Please type something in the searchfield.</h3></div></div></div></div></div>');
+            $('.result').html('<div class="row"><div class="large-12 columns"><div class="panel wrapper"><div class="row"><h3>Please type something in the searchfield.</h4></div></div></div></div>');
 
          } else {
             //Använder tmdb sök-api för att hitta filmer vars titel matchar det som eftersöks
@@ -36,7 +36,12 @@ $(document).ready(function(){
 
                   // Den här jsonen har imdbs id för filmen, json.imdb_id;
 
-                  $('.poster').html('<h2 class="loading"></h2><img id="thePoster" src=http://image.tmdb.org/t/p/w500/' + json.poster_path + ' />'); //Här behövs det en if-sats som hämtar en placeholder bild ifall den poster inte hittas
+                  // Hämtar poster eller movie-placeholder-image
+                  if (json.poster_path) {
+                    $('.poster').html('<h2 class="loading"></h2><img id="thePoster" src=http://image.tmdb.org/t/p/w500/' + json.poster_path + ' />'); 
+                  } else {
+                    $('.poster').html('<h2 class="loading"></h2><img id="thePlaceHolderImg" src=img/movie-placeholder.png' + ' />');
+                  };
 
                   $('.title').html('<h3>' + json.title + '</h3>');
 
