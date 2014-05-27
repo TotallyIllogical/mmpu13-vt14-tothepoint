@@ -81,27 +81,20 @@ $(document).ready(function(){
                 $.getJSON("https://api.themoviedb.org/3/movie/" + movieid + "/casts?api_key=c9ec56f0f1ccf916a4baa2b711e5ce29", function(json) {
                   var directors = [];
                   var writers =[];
+
                   $.each(json.crew, function( index, value ) {
-                    
                     if(value.job == "Director"){
-                      for(var i = 0; i > 1; i++){
-                        directors.push(value[i].name);
-                      }
+                      directors.push(value.name);
                     }
-                    if(value.job == "Writer"){
-                      writers.push(value.name);
-                    }else if(value.job == "Author"){
-                      writers.push(value.name);
-                    }else if(value.job == "Screenplay"){
+
+                    if(value.job == "Writer" || value.job == "Author" || value.job == "Screenplay"){
                       writers.push(value.name);
                     }
                   });
-                  console.log(writers);
-
                   var directorlist = directors.join(", ");
                   $(".director").append( document.createTextNode(directorlist));
 
-                  var writerslist = writers.join(", ")
+                  var writerslist = writers.join(", ");
                   $( ".writer" ).append( document.createTextNode(writerslist));
 
                   var actornames = [];
@@ -109,13 +102,13 @@ $(document).ready(function(){
                     actornames.push(json.cast[i].name);
                   }
                   var actorlist = actornames.join(", ");
-                  $('.starring').append( document.createTextNode( actorlist ) ); 
+                  $('.starring').append( document.createTextNode( actorlist )); 
                 });
 
 
-                } else {
-                  $('#result').html('<div class="row"><div class="large-12 columns"><div class="panel wrapper"><div class="row"><h2">We are afraid nothing was found for that search.</h2></div></div></div></div>');
-                }
+              } else {
+                $('#result').html('<div class="row"><div class="large-12 columns"><div class="panel wrapper"><div class="row"><h2">We are afraid nothing was found for that search.</h2></div></div></div></div>');
+              }
              });
 
           }
