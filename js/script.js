@@ -15,7 +15,7 @@ $(document).ready(function(){
 
          if(film == ''){
             // Om en personen inte skrivit något skrivs det här medelandet ut
-            $('.result').html('<div class="row"><div class="large-12 columns"><div class="panel wrapper"><div class="row"><h2>Please type something in the searchfield.</h2></div></div></div></div>');
+            $('.result').html('<div class="row"><div class="large-12 columns"><div class="panel wrapper"><div class="row"><div class="large-12 columns"><h3>Please type something in the searchfield.</h3></div></div></div></div></div>');
 
          } else {
             //Använder tmdb sök-api för att hitta filmer vars titel matchar det som eftersöks

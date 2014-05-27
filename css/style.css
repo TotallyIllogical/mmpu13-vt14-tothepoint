@@ -33,24 +33,17 @@ h1 {
 	color: #fff;
 }
 
-h2, h3, h4, h5, h6 {
-	color: #289cbf !important; 
-}
-
-h2 {
-	color: #289cbf !important;
-	font-size: 28px !important;
-}
-
 h3.org-title {
-	color: #333 !important;
 	font-size: 22px !important;
 }
 
 h4 {
-	margin-bottom: 20px !important;
+	margin-bottom: 10px !important;
 }
 
+.panel h2, h4 {
+	color: #289cbf !important;	
+}
 /*---------------------------------------------------------
 	STRUCTURE
 ---------------------------------------------------------*/
@@ -159,12 +152,5 @@ button#search {
 @media only screen and (max-width: 40em) { 
 	#logo {
 	  width: 100%;
-	}
-} 
-
-/* min-width 641px, medium screens */
-@media only screen and (min-width: 40.063em) { 
-	#logo {
-	  width: auto;
 	}
 } 
