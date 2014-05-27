@@ -41,9 +41,9 @@ $(document).ready(function(){
                   $('.title').html('<h3>' + json.title + '</h3>');
 
                   // Hämtar originaltitel
-                  if(json.original_title == true && json.original_title != json.title){
-                    $('.orgTitle').html('<h5>' + json.original_title + ' <em>(original title)</em>' + '</h5>');
-                  };
+                  if (json.title != json.original_title) {
+                     $('.orgTitle').html('<h5>' + json.original_title + ' <em>(original title)</em>' + '</h5>');
+                  }; 
                                                                                                            
                   var words = json.overview;
                   words = words.substr(0,370);
