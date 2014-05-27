@@ -12,11 +12,6 @@ p {
 	text-align: justify;
 }
 
-div.info {
-	display: inline;
-	margin-right: 5px;
-}
-
 img {
 	max-width: auto;
 }
@@ -43,47 +38,6 @@ h4 {
 
 .panel h2, h4 {
 	color: #289cbf !important;	
-}
-/*---------------------------------------------------------
-	STRUCTURE
----------------------------------------------------------*/
-
-.wrapper {
-	border-radius: 5px;
-}
-
-#footer {
-	text-align: center;
-	margin-top: 20px;
-	font-size: 13px;
-	color: #eee;
-}
-
-.poster {
-	border-radius: 5px;
-}
-
-/*---------------------------------------------------------
-	RATING TABLE
----------------------------------------------------------*/
-
-table {
-	border: 0;
-	margin: 0;
-}
-
-.table-wrapper {
-	margin-top: 20px;
-	width: 100%;
-}
-
-.rating {
-	color: red;
-	font-weight: bold;
-}
-
-.center {
-	text-align: center;
 }
 
 /*---------------------------------------------------------
@@ -126,6 +80,53 @@ button#search {
 }
 
 /*---------------------------------------------------------
+	STRUCTURE
+---------------------------------------------------------*/
+
+.wrapper {
+	border-radius: 5px;
+}
+
+.poster {
+	border-radius: 5px;
+}
+
+div.info {
+	display: inline;
+	margin-right: 7px;
+}
+
+#footer {
+	text-align: center;
+	margin-top: 20px;
+	font-size: 13px;
+	color: #eee;
+}
+
+/*---------------------------------------------------------
+	RATING TABLE
+---------------------------------------------------------*/
+
+table {
+	border: 0;
+	margin: 0;
+}
+
+.table-wrapper {
+	margin-top: 20px;
+	width: 100%;
+}
+
+.rating {
+	color: red;
+	font-weight: bold;
+}
+
+.center {
+	text-align: center;
+}
+
+/*---------------------------------------------------------
 	BUTTONS
 ---------------------------------------------------------*/
 
@@ -150,7 +151,15 @@ button#search {
 
 /* max-width 640px, mobile-only styles, use when QAing mobile issues */
 @media only screen and (max-width: 40em) { 
-	#logo {
+	.logo {
 	  width: 100%;
+	}
+
+	.buttons-wrapper {
+		text-align: center;
+	}
+
+	.button {
+		width: 100%;
 	}
 } 
