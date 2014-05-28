@@ -84,6 +84,10 @@ $(document).ready(function(){
 
             $('.tmdb-score').html(json.vote_average);
 
+            $.getJSON("http://api.rottentomatoes.com/api/public/v1.0/movie_alias.json?apikey=hsvze4vnd8ks2kptercdh6sq&type=imdb&id=" + json.imdb_id, function(json) {
+              console.log(json);
+            });
+
           });
           // Den här getJSON hämtar rollistan, manusförfattare och regisör
           $.getJSON("https://api.themoviedb.org/3/movie/" + movieid + "/casts?api_key=c9ec56f0f1ccf916a4baa2b711e5ce29", function(json) {
