@@ -88,9 +88,17 @@ $(document).ready(function(){
               $('.imdb-score').html(json.imdbRating);
             });
 
-            $.getJSON("http://api.rottentomatoes.com/api/public/v1.0/movie_alias.json?apikey=hsvze4vnd8ks2kptercdh6sq&type=imdb&id=" + json.imdb_id, function(json) {
-              
+            var theImdbId = json.imdb_id;
+
+            $.ajax({
+              url: "http://api.rottentomatoes.com/api/public/v1.0/movie_alias.json?apikey=hsvze4vnd8ks2kptercdh6sq&type=imdb&id=" + encodeURI(theImdbId),
+              dataType: "jsonp",
+              success: rtScoring
             });
+
+            function rtScoring(data) {
+              console.log(data);
+            } 
 
           });
           // Den här getJSON hämtar rollistan, manusförfattare och regisör
