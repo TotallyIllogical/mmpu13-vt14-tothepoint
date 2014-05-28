@@ -95,12 +95,12 @@ $(document).ready(function(){
               if(value.job == "Writer"){
                 writers.push(value.name);
               }
-              if(writers.length == 0){
+              if(writers.length < 2){
                 if(value.job == "Author"){
                   writers.push(value.name);
                 }
               }
-              if(writers.length == 0){
+              if(writers.length < 2){
                 if(value.job == "Screenplay"){
                   writers.push(value.name);
                 }
