@@ -84,8 +84,12 @@ $(document).ready(function(){
 
             $('.tmdb-score').html(json.vote_average);
 
+            $.getJSON("http://www.omdbapi.com/?i=" + json.imdb_id, function(json){
+              $('.imdb-score').html(json.imdbRating);
+            });
+
             $.getJSON("http://api.rottentomatoes.com/api/public/v1.0/movie_alias.json?apikey=hsvze4vnd8ks2kptercdh6sq&type=imdb&id=" + json.imdb_id, function(json) {
-              console.log(json);
+              
             });
 
           });
