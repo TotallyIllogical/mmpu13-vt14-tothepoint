@@ -25,11 +25,9 @@ $(document).ready(function(){
         if (json.total_results != 0 || json.total_pages != 0){
 
           // Använd idnummer från sök-api:n för att hämta resten av informationen med hjälp av huvud-api:n
-          // var resultlist = [];
-          // for(var i = 0; i < 5; i++){
-          //   var movieid = json.results[i].id;
-
-          var movieid = json.results[0].id;
+          for(var i = 0; i < 5; i++){
+          var movieid = json.results[i].id;
+          console.log(movieid);
           // Populera result-rutan (Dear f-ing Bob, the amount of code...)
           // .html ersätter det som står, append lägger till. Det var därför loopen inte fungerade, vi hade gjort rätt.
           $('.result').append('<div class="row"><div class="large-12 columns"><div class="panel wrapper"><div class="row"><div class="large-4 medium-4 columns poster"></div><article class="large-8 medium-8 columns"><h2 class="title"></h2><h3 class="org-title orgTitle"></h3><p class="description"></p><h4>Information</h4><strong>Language:</strong> <div class="info language"></div><strong>Released:</strong> <div class="info release"></div><strong>Runtime:</strong> <div class="info runtime"></div><br><strong>Genre:</strong> <div class="info genre"></div><br><strong>Director:</strong> <div class="info director"></div><br><strong>Writer:</strong> <div class="info writer"></div><br><strong>Starring:</strong> <div class="info starring"></div><div class="buttons-wrapper"><div class="read-more"></div></div></article><!-- .8-columns --></div><!-- .row --><div class="row"><div class="large-12 columns"><table class="responsive table-wrapper"><thead><tr><th class="center strong">Source</th><th class="center"><a href="http://www.themoviedb.org/" target="_blank"><img src="img/tmdb.png" alt="The Movie Database" class="logo"></a></th> <th class="center"><a href="http://www.imdb.com/" target="_blank"><img src="img/imdb.png" alt="IMDb" class="logo"></a></th><th class="center"><a href="http://www.rottentomatoes.com/" target="_blank"><img src="img/rottentomatoes.png" alt="Rotten Tomatoes" class="logo"></a></th></tr></thead><tbody><tr><td class="center strong">Maximum</td><td class="center">10</td><td class="center">10</td><td class="center">100%</td></tr><tr><td class="center strong">Rating</td><td class="rating center tmdb-score"></td><td class="rating center imdb-score"></td><td class="rating center rt-score"></td></tr></tbody></table></div><!-- .row --></div><!-- .large-12 columns --></div><!-- .panel-wrapper --></div><!-- .large-12 columns --></div><!-- .row -->');
@@ -145,7 +143,7 @@ $(document).ready(function(){
             var actorlist = actornames.join(", ");
             $('.starring').append( document.createTextNode( actorlist ));
           });
-        // }
+        };
         } else {
           $('.result').html('<div class="row"><div class="large-12 columns"><div class="panel wrapper"><div class="row"><div class="large-12 columns"><h3>We are afraid nothing was found for that search.</h3></div></div></div></div></div>');
         }
