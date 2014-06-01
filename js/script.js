@@ -39,16 +39,16 @@ $(document).ready(function(){
 
             // Hämtar poster eller movie-placeholder-image
             if (json.poster_path) {
-              $('#'+i+'>.poster').html('<h2 class="loading"></h2><img id="thePoster" src=http://image.tmdb.org/t/p/w500/' + json.poster_path + ' />');
+              $('#'+i).find('.poster').html('<h2 class="loading"></h2><img id="thePoster" src=http://image.tmdb.org/t/p/w500/' + json.poster_path + ' />');
             } else {
-              $('#'+i+'>.poster').html('<h2 class="loading"></h2><img id="thePlaceHolderImg" src=img/movie-placeholder.png' + ' />');
+              $('#'+i).find('.poster').html('<h2 class="loading"></h2><img id="thePlaceHolderImg" src=img/movie-placeholder.png' + ' />');
             }
 
-            $('#'+i+'>.title').append('<h3>' + json.title + '</h3>');
+            $('#'+i).find('.title').append('<h3>' + json.title + '</h3>');
 
             // Hämtar originaltitel
             if (json.title != json.original_title) {
-              $('#'+i+'>.orgTitle').html('<h5>' + json.original_title + ' <em>(original title)</em>' + '</h5>');
+              $('#'+i).find('.orgTitle').html('<h5>' + json.original_title + ' <em>(original title)</em>' + '</h5>');
             }
                                                                                                  
             var words = json.overview;
@@ -57,9 +57,9 @@ $(document).ready(function(){
               words += "...";
             }
 
-            $('#'+i+'>.description').html(words);
+            $('#'+i).find('.description').html(words);
 
-            $('#'+i+'>.read-more').html( ' <a href="https://www.themoviedb.org/movie/' + movieid + '" class="button" target="_blank">Read more &raquo;</a>');
+            $('#'+i).find('.read-more').html( ' <a href="https://www.themoviedb.org/movie/' + movieid + '" class="button" target="_blank">Read more &raquo;</a>');
 
             var languages = [];
             $.each(json.spoken_languages, function( index, value ) {
@@ -67,11 +67,11 @@ $(document).ready(function(){
               return languages;
             });
             var languagelist = languages.join(", ");
-            $( '#'+i+'>.language' ).append( document.createTextNode(languagelist));
+            $( '#'+i).find('.language' ).append( document.createTextNode(languagelist));
 
-            $('#'+i+'>.release').html(json.release_date);
+            $('#'+i).find('.release').html(json.release_date);
 
-            $('#'+i+'>.runtime').html(json.runtime + " min");
+            $('#'+i).find('.runtime').html(json.runtime + " min");
 
             var genres = [];
             $.each(json.genres, function( index, value ) {
@@ -79,12 +79,12 @@ $(document).ready(function(){
               return genres;
             });
             var genrelist = genres.join(" / ");
-            $('#'+i+'>.genre').append( document.createTextNode( genrelist ) );
+            $('#'+i).find('.genre').append( document.createTextNode( genrelist ) );
 
-            $('#'+i+'>.tmdb-score').html(json.vote_average);
+            $('#'+i).find('.tmdb-score').html(json.vote_average);
 
             $.getJSON("http://www.omdbapi.com/?i=" + json.imdb_id, function(json){
-              $('#'+i+'>.imdb-score').html(json.imdbRating);
+              $('#'+i).find('.imdb-score').html(json.imdbRating);
             });
 
             var imdbIDwithLetters = json.imdb_id;
@@ -98,7 +98,7 @@ $(document).ready(function(){
 
             function rtScoring(data) {
               var theRTscore = data.ratings.critics_score;
-              $('#'+i+'>.rt-score').html(theRTscore + '%');
+              $('#'+i).find('.rt-score').html(theRTscore + '%');
             }; 
 
           });
@@ -128,20 +128,20 @@ $(document).ready(function(){
             });
 
             var directorlist = directors.join(", ");
-            $('#'+i+'>.director').append( document.createTextNode(directorlist));
+            $('#'+i).find('.director').append( document.createTextNode(directorlist));
 
             if(writers.length == 0){
               writers.push("No name found");
             }
             var writerslist = writers.join(", ");
-            $( '#'+i+'>.writer' ).append( document.createTextNode(writerslist));
+            $( '#'+i).find('.writer' ).append( document.createTextNode(writerslist));
 
             var actornames = [];
             for(var i = 0; i < 5; i++){
               actornames.push(json.cast[i].name);
             }
             var actorlist = actornames.join(", ");
-            $('#'+i+'>.starring').append( document.createTextNode( actorlist ));
+            $('#'+i).find('.starring').append( document.createTextNode( actorlist ));
           });
         };
         } else {
