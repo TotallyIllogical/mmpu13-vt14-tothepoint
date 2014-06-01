@@ -44,7 +44,7 @@ $(document).ready(function(){
               $('.poster').html('<h2 class="loading"></h2><img id="thePlaceHolderImg" src=img/movie-placeholder.png' + ' />');
             }
 
-            $('.title').html('<h3>' + json.title + '</h3>');
+            $('.title').append('<h3>' + json.title + '</h3>');
 
             // Hämtar originaltitel
             if (json.title != json.original_title) {
