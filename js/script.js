@@ -100,7 +100,7 @@ $(document).ready(function(){
 
             function rtScoring(data) {
               var theRTscore = data.ratings.critics_score;
-              $('.rt-score').html(theRTscore);
+              $('.rt-score').html(theRTscore + '%');
             }; 
 
           });
