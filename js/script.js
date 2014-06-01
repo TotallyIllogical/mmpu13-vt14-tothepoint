@@ -23,7 +23,7 @@ $(document).ready(function(){
 
       // Använder tmdb sök-api för att hitta filmer vars titel matchar det som eftersöks
       $.getJSON("http://api.themoviedb.org/3/search/movie?query=" + film + "&api_key=c9ec56f0f1ccf916a4baa2b711e5ce29", function(json) {
-        console.log(json);
+
         // Kollar så att results eller pages inte är tomma
         if (json.total_results != 0 || json.total_pages != 0){
 
@@ -107,12 +107,14 @@ $(document).ready(function(){
               // Hämtar en ny json från en annan källa med hjälp av imdb_id:t från den förra json
               $.getJSON("http://www.omdbapi.com/?i=" + json.imdb_id, function(json){
                 // Hämtar ut filmens imdb-poäng
-                $('#'+movieid).find('.imdb-score').html(json.imdbRating);
+                var imdbScore = json.imdbRating;
               });
+              console.log('Kollar id ' + movieid);
+              $('#'+movieid).find('.imdb-score').html(imdbScore);
+              console.log(movieid + ' imdb score: ' + imdbScore);
 
               // Döper om json.imdb_id
               var imdbIDwithLetters = json.imdb_id;
-              console.log(json.imdb_id);
               // Tar bort de första två tecknena i värdet
               var theImdbId = imdbIDwithLetters.substring(2);
 
@@ -127,6 +129,7 @@ $(document).ready(function(){
               function rtScoring(data) {
                 // Döper om det vi vill använda
                 var theRTscore = data.ratings.critics_score;
+                console.log(movieid + ' RT-score: ' + theRTscore);
                 // Skriver ut filmens RT-poäng
                 $('#'+movieid).find('.rt-score').html(theRTscore + '%');
               };
