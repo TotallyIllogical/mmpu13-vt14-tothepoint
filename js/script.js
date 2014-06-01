@@ -28,7 +28,7 @@ $(document).ready(function(){
         if (json.total_results != 0 || json.total_pages != 0){
 
           // Gör det vi vill nedan 5 gånger
-          for(var i = 0; i < 7; i++){
+          for(var i = 0; i < 5; i++){
 
             // Sätter den nuvarande filmens id nummer som variablen movieid
             var movieid = json.results[i].id;
@@ -105,13 +105,13 @@ $(document).ready(function(){
               $('#'+movieid).find('.tmdb-score').html(json.vote_average);
 
               // Hämtar en ny json från en annan källa med hjälp av imdb_id:t från den förra json
-              $.getJSON("http://www.omdbapi.com/?i=" + json.imdb_id, function(json){
-                // Hämtar ut filmens imdb-poäng
-                var imdbScore = json.imdbRating;
-              });
-              console.log('Kollar id ' + movieid);
-              $('#'+movieid).find('.imdb-score').html(imdbScore);
-              console.log(movieid + ' imdb score: ' + imdbScore);
+              var imdbId = json.imdb_id;
+              function setImdbScore(imbdId, node){
+               $.getJSON("http://www.omdbapi.com/?i=" + imdbId, function(json){
+                 $(node).html(json.imdbRating);
+               }); 
+              };
+              setImdbScore(json.imdb_id, $("#"+movieid).find('.imdb-score')); 
 
               // Döper om json.imdb_id
               var imdbIDwithLetters = json.imdb_id;
@@ -119,22 +119,24 @@ $(document).ready(function(){
               var theImdbId = imdbIDwithLetters.substring(2);
 
               // Skapar en jsonp utifrån RT's (Rotten Tomatoes) api och om den är en "success" så kör den funktionen rtScoring
-              $.ajax({
-                url: "http://api.rottentomatoes.com/api/public/v1.0/movie_alias.json?apikey=hsvze4vnd8ks2kptercdh6sq&type=imdb&id=" + encodeURI(theImdbId),
-                dataType: "jsonp",
-                success: rtScoring
-              });
+              function setRtScore(imdbRtId, node) { 
+                // Tar in parameten datan från ajax-hämtninen
+                function rtScoring(data) {
+                  // Döper om det vi vill använda
+                  var theRTscore = data.ratings.critics_score;
+                  // Skriver ut filmens RT-poäng
+                  $(node).html(theRTscore + '%');
+                };
 
-              // Tar in parameten datan från ajax-hämtninen
-              function rtScoring(data) {
-                // Döper om det vi vill använda
-                var theRTscore = data.ratings.critics_score;
-                console.log(movieid + ' RT-score: ' + theRTscore);
-                // Skriver ut filmens RT-poäng
-                $('#'+movieid).find('.rt-score').html(theRTscore + '%');
+                $.ajax({
+                  url: "http://api.rottentomatoes.com/api/public/v1.0/movie_alias.json?apikey=hsvze4vnd8ks2kptercdh6sq&type=imdb&id=" + encodeURI(theImdbId),
+                  dataType: "jsonp",
+                  success: rtScoring
+                });
               };
-
+              setRtScore(theImdbId, $('#'+movieid).find('.rt-score'));
             });
+
             // Den här getJSON hämtar rollistan, manusförfattare och regisör
             $.getJSON("https://api.themoviedb.org/3/movie/" + movieid + "/casts?api_key=c9ec56f0f1ccf916a4baa2b711e5ce29", function(json) {
 
