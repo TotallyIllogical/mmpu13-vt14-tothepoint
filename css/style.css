@@ -131,10 +131,11 @@ table {
 ---------------------------------------------------------*/
 
 .buttons-wrapper {
-	margin-top: 15px;
+	display: inline;
 }
 
 .button {
+	float: left;
 	background: #289cbf;
 	color: #fff;
 	width: 130px;
@@ -143,6 +144,10 @@ table {
 	border-radius: 5px;
 	margin-bottom: 20px;
 	margin-right: 10px;
+}
+
+.read-more, .trailer {
+	margin-top: 15px;
 }
 
 /*---------------------------------------------------------

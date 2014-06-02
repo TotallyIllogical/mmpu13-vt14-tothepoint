@@ -34,7 +34,7 @@ $(document).ready(function(){
             var movieid = json.results[i].id;
 
             // Populera result-rutan (Dear f-ing Bob, the amount of code...)
-            $('.result').append('<div id="'+movieid+'" class="row"><div class="large-12 columns"><div class="panel wrapper"><div class="row"><div class="large-4 medium-4 columns poster"></div><article class="large-8 medium-8 columns"><h2 class="title"></h2><h3 class="org-title orgTitle"></h3><p class="description"></p><h4>Information</h4><strong>Language:</strong> <div class="info language"></div><strong>Released:</strong> <div class="info release"></div><strong>Runtime:</strong> <div class="info runtime"></div><br><strong>Genre:</strong> <div class="info genre"></div><br><strong>Director:</strong> <div class="info director"></div><br><strong>Writer:</strong> <div class="info writer"></div><br><strong>Starring:</strong> <div class="info starring"></div><div class="buttons-wrapper"><div class="read-more"></div></div></article><!-- .8-columns --></div><!-- .row --><div class="row"><div class="large-12 columns"><table class="responsive table-wrapper"><thead><tr><th class="center strong">Source</th><th class="center"><a href="http://www.themoviedb.org/" target="_blank"><img src="img/tmdb.png" alt="The Movie Database" class="logo"></a></th> <th class="center"><a href="http://www.imdb.com/" target="_blank"><img src="img/imdb.png" alt="IMDb" class="logo"></a></th><th class="center"><a href="http://www.rottentomatoes.com/" target="_blank"><img src="img/rottentomatoes.png" alt="Rotten Tomatoes" class="logo"></a></th></tr></thead><tbody><tr><td class="center strong">Maximum</td><td class="center">10</td><td class="center">10</td><td class="center">100%</td></tr><tr><td class="center strong">Rating</td><td class="rating center tmdb-score"></td><td class="rating center imdb-score"></td><td class="rating center rt-score"></td></tr></tbody></table></div><!-- .row --></div><!-- .large-12 columns --></div><!-- .panel-wrapper --></div><!-- .large-12 columns --></div><!-- .row -->');
+            $('.result').append('<div id="'+movieid+'" class="row"><div class="large-12 columns"><div class="panel wrapper"><div class="row"><div class="large-4 medium-4 columns poster"></div><article class="large-8 medium-8 columns"><h2 class="title"></h2><h3 class="org-title orgTitle"></h3><p class="description"></p><h4>Information</h4><strong>Language:</strong> <div class="info language"></div><strong>Released:</strong> <div class="info release"></div><strong>Runtime:</strong> <div class="info runtime"></div><br><strong>Genre:</strong> <div class="info genre"></div><br><strong>Director:</strong> <div class="info director"></div><br><strong>Writer:</strong> <div class="info writer"></div><br><strong>Starring:</strong> <div class="info starring"></div><div class="buttons-wrapper"><div class="read-more"></div><div class="trailer"></div></div></article><!-- .8-columns --></div><!-- .row --><div class="row"><div class="large-12 columns"><table class="responsive table-wrapper"><thead><tr><th class="center strong">Source</th><th class="center"><a href="http://www.themoviedb.org/" target="_blank"><img src="img/tmdb.png" alt="The Movie Database" class="logo"></a></th> <th class="center"><a href="http://www.imdb.com/" target="_blank"><img src="img/imdb.png" alt="IMDb" class="logo"></a></th><th class="center"><a href="http://www.rottentomatoes.com/" target="_blank"><img src="img/rottentomatoes.png" alt="Rotten Tomatoes" class="logo"></a></th></tr></thead><tbody><tr><td class="center strong">Maximum</td><td class="center">10</td><td class="center">10</td><td class="center">100%</td></tr><tr><td class="center strong">Rating</td><td class="rating center tmdb-score"></td><td class="rating center imdb-score"></td><td class="rating center rt-score"></td></tr></tbody></table></div><!-- .row --></div><!-- .large-12 columns --></div><!-- .panel-wrapper --></div><!-- .large-12 columns --></div><!-- .row -->');
    
             // Den här getJSON hämtar basinformation så som titel, synopsis och poster
             $.getJSON("https://api.themoviedb.org/3/movie/" + movieid + "?api_key=c9ec56f0f1ccf916a4baa2b711e5ce29", function(json) {
@@ -71,6 +71,14 @@ $(document).ready(function(){
 
               // Lägger till "read more"-knappen och länkar den
               $('#'+movieid).find('.read-more').html( ' <a href="https://www.themoviedb.org/movie/' + movieid + '" class="button" target="_blank">Read more &raquo;</a>');
+
+              // Den här getJSON hämtar filmens trailer
+                function setTrailer(movieid,node) { 
+                  $.getJSON("https://api.themoviedb.org/3/movie/" + movieid + "/videos?api_key=c9ec56f0f1ccf916a4baa2b711e5ce29", function(json) {
+                    $(node).html( ' <a href="http://www.youtube.com/watch?v=' + json.results[0].key + '" class="button" target="_blank">Watch trailer &raquo;</a>');                            
+                  });
+              };
+              setTrailer(movieid, $('#'+movieid).find('.trailer'));
 
               // Skapar tom array
               var languages = [];
@@ -167,6 +175,9 @@ $(document).ready(function(){
                 }
               });
 
+              if(directors.length == 0){
+                directors.push("No name found");
+              }
               // Gör om directors arrayen till en sträng 
               var directorlist = directors.join(", ");
               // Hämtar ut directors 
@@ -183,10 +194,17 @@ $(document).ready(function(){
 
               // Skapar en tom array
               var actornames = [];
+                               console.log(json.cast);
               // Hämtar ut fem namn och pushar in dem i den tomma arrayen
               for(var i = 0; i < 5; i++){
                 actornames.push(json.cast[i].name);
               }
+
+
+              if(actornames.length == 0){
+                actornames.push("No name found");
+                console.log('Hej')
+              }              
               // Gör om arrayen till en sträng
               var actorlist = actornames.join(", ");
               // Skriver ut strängen
