@@ -117,7 +117,7 @@ table {
 	width: 100%;
 }
 
-.rating {
+.rating a{
 	color: red;
 	font-weight: bold;
 }

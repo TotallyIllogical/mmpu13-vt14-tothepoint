@@ -109,13 +109,13 @@ $(document).ready(function(){
               $('#'+movieid).find('.genre').append( document.createTextNode( genrelist ) );
 
               // Hämtar ut filmens tmdb-poäng
-              $('#'+movieid).find('.tmdb-score').html(json.vote_average);
+              $('#'+movieid).find('.tmdb-score').html('<a href="https://www.themoviedb.org/movie/' + movieid + '" target="_blank">' + json.vote_average + '</a>');
 
               // Hämtar en ny json från en annan källa med hjälp av imdb_id:t från den förra json
               var imdbId = json.imdb_id;
               function setImdbScore(imbdId, node){
                $.getJSON("http://www.omdbapi.com/?i=" + imdbId, function(json){
-                 $(node).html(json.imdbRating);
+                 $(node).html('<a href="http://www.imdb.com/title/' + imdbId + '" target="_blank">' + json.imdbRating + '</a>');
                }); 
               };
               setImdbScore(json.imdb_id, $("#"+movieid).find('.imdb-score')); 
@@ -131,7 +131,7 @@ $(document).ready(function(){
                   // Döper om det vi vill använda
                   var theRTscore = data.ratings.critics_score;
                   // Skriver ut filmens RT-poäng
-                  $(node).html(theRTscore + '%');
+                  $(node).html('<a href="http://www.rottentomatoes.com/m/' + data.id + '" target="_blank">' + theRTscore + '% </a>');
                 };
 
                 // Skapar en jsonp utifrån RT's (Rotten Tomatoes) API och om den är en "success" så kör den funktionen rtScoring
