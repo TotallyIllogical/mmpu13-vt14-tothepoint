@@ -96,11 +96,15 @@ div.info {
 	margin-right: 7px;
 }
 
-#footer {
+.footer {
 	text-align: center;
 	margin-top: 20px;
 	font-size: 13px;
 	color: #eee;
+}
+
+.embiggering {
+	font-size: 15px;
 }
 
 /*---------------------------------------------------------

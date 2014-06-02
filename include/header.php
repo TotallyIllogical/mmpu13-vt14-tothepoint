@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html class="no-js" lang="en">
 	<head>
-		<title><?php echo $pageTitle;?></title>	    
+		<title><?php echo $pageTitle;?> - A collection site for movie scores</title>	    
 	    <meta charset="utf-8">
     	<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=no;">  
 
