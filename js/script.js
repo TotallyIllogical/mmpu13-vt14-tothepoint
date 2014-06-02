@@ -86,6 +86,9 @@ $(document).ready(function(){
               $.each(json.spoken_languages, function( index, value ) {
                 languages.push(value.name);
               });
+              if(languages.length == 0){
+                languages.push("Nothing found");
+              }
               // Gör om arrayen till en sträng och döper om den
               var languagelist = languages.join(", ");
               // Skriver vi ut languagelist
@@ -104,6 +107,9 @@ $(document).ready(function(){
                 genres.push(value.name);
                 return genres;
               });
+              if(genres.length == 0){
+                genres.push("No genre found");
+              }
               // Gör om innehållet i arrayen till en sträng
               var genrelist = genres.join(" / ");
               // Lägger in genrena
@@ -194,12 +200,18 @@ $(document).ready(function(){
 
               // Skapar en tom array
               var actornames = [];
-                               console.log(json.cast);
-              // Hämtar ut fem namn och pushar in dem i den tomma arrayen
-              for(var i = 0; i < 5; i++){
-                actornames.push(json.cast[i].name);
+              var limit;
+              if (json.cast.length < 5){
+                limit = json.cast.length;
+              }
+              else{
+                limit = 5;
               }
 
+              // Hämtar ut fem namn och pushar in dem i den tomma arrayen
+              for(var i = 0; i < limit; i++){
+                actornames.push(json.cast[i].name);
+              }
 
               if(actornames.length == 0){
                 actornames.push("No name found");
