@@ -1,24 +1,16 @@
 $(document).ready(function(){
 
-  // Sökbar funktionen
-  $('#term').focus(function(){
-    var full = $(".result").has("img").length ? true : false;
-    if(full == false){
-      $('.result').empty();
-    }
-  });
-
   var getMovies = function(){
 
     var film = $('#term').val();
 
     if(film == ''){
-      // Om en personen inte skrivit något skrivs det här medelandet ut
+      // Om en inte skriver något i sökfältet skrivs det här medelandet ut
       $('.result').html('<div class="row"><div class="large-12 columns"><div class="panel wrapper"><div class="row"><div class="large-12 columns"><h3>Please type something in the searchfield.</h3></div></div></div></div></div>');
 
     } else {
       
-      // Rensar Bob
+      // Rensar resultat-rutan
       $(".result").empty();
 
       // Använder tmdb sök-api för att hitta filmer vars titel matchar det som eftersöks
@@ -27,10 +19,10 @@ $(document).ready(function(){
         // Kollar så att results eller pages inte är tomma
         if (json.total_results != 0 || json.total_pages != 0){
 
-          // Gör det vi vill nedan 5 gånger
+          // Bestämmer att 5 resltat ska visas
           for(var i = 0; i < 5; i++){
 
-            // Sätter den nuvarande filmens id nummer som variablen movieid
+            // Sätter den nuvarande filmens id-nummer som variabeln movieid
             var movieid = json.results[i].id;
 
             // Populera result-rutan (Dear f-ing Bob, the amount of code...)
@@ -39,7 +31,7 @@ $(document).ready(function(){
             // Den här getJSON hämtar basinformation så som titel, synopsis och poster
             $.getJSON("https://api.themoviedb.org/3/movie/" + movieid + "?api_key=c9ec56f0f1ccf916a4baa2b711e5ce29", function(json) {
               
-              // Definerar om variablen movieid till den nuvarandre idn
+              // Definerar om variabel movieid till den nuvarandre idn
               movieid = json.id;
 
               // Hämtar poster eller movie-placeholder-image
@@ -49,7 +41,7 @@ $(document).ready(function(){
                 $('#'+movieid).find('.poster').html('<h2 class="loading"></h2><img id="thePlaceHolderImg" src=img/movie-placeholder.png' + ' />');
               }
 
-              // Lägger in titeln
+              // Lägger in filmtitel
               $('#'+movieid).find('.title').append('<h3>' + json.title + '</h3>');
 
               // Kollar om orginal titel finns och skriver ut den i sådanna fall
@@ -57,22 +49,22 @@ $(document).ready(function(){
                 $('#'+movieid).find('.orgTitle').html('<h5>' + json.original_title + ' <em>(original title)</em>' + '</h5>');
               }
               
-              // Tar in overview och kortar ner den om den är mer än 370 tecken                            
+              // Tar in filmens beskrivning och kortar ner den om den är mer än 370 tecken                            
               var words = json.overview;
               words = words.substr(0,370);
 
-              // Sätter ditt tre punkter om texten är 370 tecken lång
+              // Lägger till tre punkter om texten är 370 tecken lång
               if(words.length == 370){
                 words += "...";
               }
 
-              // Lägger in den nedkortade overviewn som vi döpt om till words
+              // Lägger in den nedkortade filmbeskrivningen
               $('#'+movieid).find('.description').html(words);
 
-              // Lägger till "read more"-knappen och länkar den
+              // Lägger till "read more"-knappen och länkar till filmens tmdb-sida
               $('#'+movieid).find('.read-more').html( ' <a href="https://www.themoviedb.org/movie/' + movieid + '" class="button" target="_blank">Read more &raquo;</a>');
 
-              // Den här getJSON hämtar filmens trailer
+              // Hämtar filmens trailer
                 function setTrailer(movieid,node) { 
                   $.getJSON("https://api.themoviedb.org/3/movie/" + movieid + "/videos?api_key=c9ec56f0f1ccf916a4baa2b711e5ce29", function(json) {
                     $(node).html( ' <a href="http://www.youtube.com/watch?v=' + json.results[0].key + '" class="button" target="_blank">Watch trailer &raquo;</a>');                            
@@ -80,18 +72,19 @@ $(document).ready(function(){
               };
               setTrailer(movieid, $('#'+movieid).find('.trailer'));
 
-              // Skapar tom array
+              // Skapar en tom array
               var languages = [];
-              // Lägger in värdena från spoken_languages i den tomma arrayen vi skapade innan
+              // Lägger in värdena från spoken_languages i den tomma arrayen som skapades innan
               $.each(json.spoken_languages, function( index, value ) {
                 languages.push(value.name);
               });
+              // Skriver ut 'nothing found' om inga språk hittas
               if(languages.length == 0){
                 languages.push("Nothing found");
               }
               // Gör om arrayen till en sträng och döper om den
               var languagelist = languages.join(", ");
-              // Skriver vi ut languagelist
+              // Skriver ut languagelist
               $( '#'+movieid).find('.language' ).append( document.createTextNode(languagelist));
 
               // Hämtar ut release date
@@ -132,9 +125,8 @@ $(document).ready(function(){
               // Tar bort de första två tecknena i värdet
               var theImdbId = imdbIDwithLetters.substring(2);
 
-              // Skapar en jsonp utifrån RT's (Rotten Tomatoes) api och om den är en "success" så kör den funktionen rtScoring
               function setRtScore(imdbRtId, node) { 
-                // Tar in parameten datan från ajax-hämtninen
+                // Tar in parameten datan från ajax-hämtningen
                 function rtScoring(data) {
                   // Döper om det vi vill använda
                   var theRTscore = data.ratings.critics_score;
@@ -142,6 +134,7 @@ $(document).ready(function(){
                   $(node).html(theRTscore + '%');
                 };
 
+                // Skapar en jsonp utifrån RT's (Rotten Tomatoes) API och om den är en "success" så kör den funktionen rtScoring
                 $.ajax({
                   url: "http://api.rottentomatoes.com/api/public/v1.0/movie_alias.json?apikey=hsvze4vnd8ks2kptercdh6sq&type=imdb&id=" + encodeURI(theImdbId),
                   dataType: "jsonp",
@@ -165,7 +158,7 @@ $(document).ready(function(){
                   directors.push(value.name);
                 }
 
-                // Här var det för krångligt för att lista ut hur jag skulle begränsa antalet 
+                // Begränsar antalet namn
                 if(value.job == "Writer" && writers.length < 2){
                   writers.push(value.name);
                 }
@@ -184,12 +177,12 @@ $(document).ready(function(){
               if(directors.length == 0){
                 directors.push("No name found");
               }
-              // Gör om directors arrayen till en sträng 
+              // Gör om directors-arrayen till en sträng 
               var directorlist = directors.join(", ");
-              // Hämtar ut directors 
+              // Hämtar directors 
               $('#'+movieid).find('.director').append(document.createTextNode(directorlist));
 
-              // Kollar om writers arrayen är tom
+              // Kollar om writers-arrayen är tom
               if(writers.length == 0){
                 writers.push("No name found");
               }
@@ -200,7 +193,9 @@ $(document).ready(function(){
 
               // Skapar en tom array
               var actornames = [];
+              // Skapar variabeln limit som ska definieras i if-satsen nedan
               var limit;
+              // Sätter längden på limit
               if (json.cast.length < 5){
                 limit = json.cast.length;
               }
@@ -208,14 +203,13 @@ $(document).ready(function(){
                 limit = 5;
               }
 
-              // Hämtar ut fem namn och pushar in dem i den tomma arrayen
+              // Hämtar ut skådespelarnamnen och pushar in dem i den tomma arrayen
               for(var i = 0; i < limit; i++){
                 actornames.push(json.cast[i].name);
               }
 
               if(actornames.length == 0){
                 actornames.push("No name found");
-                console.log('Hej')
               }              
               // Gör om arrayen till en sträng
               var actorlist = actornames.join(", ");
@@ -225,7 +219,7 @@ $(document).ready(function(){
           };
         } else {
 
-          // Om inga resultar hittas så skrivs detta ut
+          // Om inga filmresultat hittas skrivs detta ut
           $('.result').html('<div class="row"><div class="large-12 columns"><div class="panel wrapper"><div class="row"><div class="large-12 columns"><h3>We are afraid nothing was found for that search.</h3></div></div></div></div></div>');
         }
       });
