@@ -1,7 +1,7 @@
     <footer class="row">
         <div class="large-12 columns">
 
-                <p class="footer embiggering">To the Point is site that collects movie scores from different movie-databases for easy viewing.</p>              
+                <p class="footer embiggering">To the Point is a site that collects movie scores from different movie-databases for easy viewing.</p>              
 
                 <p class="footer">Designed & Developed by Hanni & Eia 2014</p>
             
