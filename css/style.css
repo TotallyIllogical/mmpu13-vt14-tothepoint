@@ -160,6 +160,7 @@ table {
 
 /* max-width 640px, mobile-only styles, use when QAing mobile issues */
 @media only screen and (max-width: 40em) { 
+	
 	.logo {
 	  width: 100%;
 	}
@@ -175,4 +176,4 @@ table {
 	h2 {
 		margin-top: 20px;
 	}
-} 
+}
