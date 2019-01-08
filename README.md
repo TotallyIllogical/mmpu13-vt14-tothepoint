@@ -5,3 +5,5 @@ This is a site where you can search for a movie and see the different scores the
 We used jquery, javascript, html and css with Foundation Zurb's framwork to make the site.
 
 We who made this are two students from Teknikhögskolan located in Malmö. This was an assignment where we had to use what we learned so far to come up with a site and make it. 
+
+Due to changes to APIs this app can no longer fetch movie scores
